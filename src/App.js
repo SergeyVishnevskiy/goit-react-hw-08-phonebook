@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import AddContact from "./components/AddContact/AddContact";
+import AllContacts from "./components/AllContacts/AllContacts";
+import FilterContacts from "./components/FilterContacts/FilterContacts";
+import Alert from "./components/Alert/Alert";
+import { CSSTransition } from "react-transition-group";
+import { useSelector } from "react-redux";
+import { getContacts, getError } from "./redux/selectors/contacts-selectors";
 
 function App() {
+  const contacts = useSelector(getContacts);
+  const error = useSelector(getError);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <CSSTransition
+        in={true}
+        appear={true}
+        timeout={500}
+        classNames="titlePhonebook"
+        unmountOnExit
+      >
+        <h1 className="titlePhonebook">Phonebook</h1>
+      </CSSTransition>
+
+      <AddContact />
+
+      <CSSTransition
+        in={contacts.length > 1}
+        classNames="filter"
+        timeout={250}
+        unmountOnExit
+      >
+        <FilterContacts />
+      </CSSTransition>
+
+      <AllContacts />
+
+      {error && <Alert message={error.message} />}
     </div>
   );
 }
