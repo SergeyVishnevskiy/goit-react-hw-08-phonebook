@@ -1,11 +1,23 @@
-import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "./reducers/rootReducer";
+import { createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import rootReducer from "./reducers";
+import thunk from "redux-thunk";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-const store = configureStore({
-  reducer: rootReducer,
-});
+const persistConfig = {
+  key: "user",
+  storage,
+  whitelist: ["token", "userEmail"],
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const store = createStore(
+  persistedReducer,
+  composeWithDevTools(applyMiddleware(thunk))
+);
+
+export const persistor = persistStore(store);
+
 export default store;
-
-// import { composeWithDevTools } from "redux-devtools-extension";
-// const store = createStore(rootReducer, composeWithDevTools());
-//export default store
