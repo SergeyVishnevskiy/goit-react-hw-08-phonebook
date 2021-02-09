@@ -6,7 +6,7 @@ axios.defaults.baseURL = "https://goit-phonebook-api.herokuapp.com/";
 export const getUserOperation = (token) => async (dispatch) => {
   try {
     const result = await axios({
-      urk: "/contacts",
+      url: "contacts",
       method: "get",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -18,7 +18,7 @@ export const getUserOperation = (token) => async (dispatch) => {
   }
 };
 
-export const postIserOperation = (item, token) => async (dispatch) => {
+export const postUserOperation = (item, token) => async (dispatch) => {
   try {
     const result = await axios({
       url: "/contacts",

@@ -1,0 +1,30 @@
+.header__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  box-shadow: 0px 3px 5px grey;
+  border-radius: 0 0 5px 5px;
+}
+
+.header__email {
+  color: wheat;
+  font-size: 24px;
+  font-weight: 700;
+  margin-right: 20px;
+}
+
+.header__item {
+  color: greenyellow;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.header__item:hover {
+  color: green;
+}
+
+.header__item:not(:last-child) {
+  margin-right: 60px;
+}

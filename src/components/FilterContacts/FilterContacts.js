@@ -1,16 +1,13 @@
 import React from "react";
 import styles from "./FilterConatcts.module.css";
-import { useSelector, useDispatch } from "react-redux";
-import { getFilter } from "../../redux/selectors/contacts-selectors";
-import { setFilter } from "../../redux/actions/actions";
+import { useDispatch } from "react-redux";
+import { filterEdit } from "../../redux/actions/filterAction";
 
 const FilterContacts = () => {
-  const value = useSelector(getFilter);
   const dispatch = useDispatch();
 
-  const changeHandler = (event) => {
-    const { value } = event.target;
-    dispatch(setFilter(value));
+  const editFilter = ({ target }) => {
+    dispatch(filterEdit(target.value.toLowerCase()));
   };
 
   return (
@@ -18,9 +15,8 @@ const FilterContacts = () => {
       <p className={styles.inputName}>Find contacts by name</p>
       <input
         type="text"
-        value={value}
         placeholder="Enter name"
-        onChange={changeHandler}
+        onChange={editFilter}
         className={styles.filter}
       ></input>
     </div>

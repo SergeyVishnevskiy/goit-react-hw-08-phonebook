@@ -9,7 +9,7 @@ export const createUserOperation = (user) => async (dispatch) => {
   try {
     const result = await axios.post("/users/signup", user);
     dispatch(setToken(result.data.token));
-    dispatch(userEmail(result.data.email));
+    dispatch(userEmail(result.data.user.email));
   } catch (error) {
     console.log(error);
   }
