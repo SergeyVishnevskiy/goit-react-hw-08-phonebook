@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import styles from "./AddContact.module.css";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addContact, fetchContacts } from "../../redux/operation/operations";
-import { getContacts } from "../../redux/selectors/contacts-selectors";
+import { addContact } from "../../redux/operation/phoneOperations";
+import { getContacts } from "../../redux/selectors/phoneSelector";
 import { CSSTransition } from "react-transition-group";
+import styles from "./AddContact.module.css";
 import Alert from "../Alert/Alert";
 
 const initState = {
@@ -16,11 +16,6 @@ const Phonebook = () => {
   const [state, setState] = useState({ ...initState });
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
@@ -44,7 +39,6 @@ const Phonebook = () => {
         alertMessage: "Please enter correct name and number!",
       }));
     }
-
     contacts.some((cont) => cont.name.toLowerCase() === name.toLowerCase())
       ? setState((prevState) => ({
           ...prevState,
