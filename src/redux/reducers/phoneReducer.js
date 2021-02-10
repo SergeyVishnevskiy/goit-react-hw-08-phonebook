@@ -8,7 +8,7 @@ import {
   removeContactSuccess,
   removeContactError,
   setFilter,
-} from "../actions/actions";
+} from "../actions/phoneAction";
 
 const items = createReducer([], {
   [addContactSuccess]: (state, action) => [...state, action.payload],
@@ -19,7 +19,6 @@ const items = createReducer([], {
 const filter = createReducer("", {
   [setFilter]: (_, action) => action.payload,
 });
-
 const error = createReducer(null, {
   [addContactError]: (_, action) => action.payload,
   [addContactSuccess]: () => null,
@@ -34,5 +33,4 @@ const phonebookReducer = combineReducers({
   filter,
   error,
 });
-
 export default phonebookReducer;
