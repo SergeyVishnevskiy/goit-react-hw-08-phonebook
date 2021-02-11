@@ -7,10 +7,10 @@ import Navigation from "./navigation/Navigation";
 const Header = () => {
   const isAuthenticated = useSelector(isLogin);
   return (
-    <>
+    <div>
       <Navigation />
       {isAuthenticated && <UserMenu />}
-    </>
+    </div>
   );
 };
 
