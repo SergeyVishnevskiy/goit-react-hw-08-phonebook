@@ -1,17 +1,13 @@
 import "./App.css";
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getCurrentUser } from "./redux/operation/authOperation";
+import React from "react";
+// import { useDispatch } from "react-redux";
+// import { getCurrentUser } from "./redux/operation/authOperation";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 
 const App = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getCurrentUser);
-    // eslint-disable-next-line
-  }, []);
   return (
     <>
       <Header />
