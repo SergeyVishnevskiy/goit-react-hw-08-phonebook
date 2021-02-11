@@ -1,10 +1,9 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { logOut } from "../../redux/operation/authOperation";
-import { getUserName } from "../../redux/selectors/authSelector";
+// import { getUserName } from "../../redux/selectors/authSelector";
 
 const UserMenu = () => {
-  const name = useSelector(getUserName);
   const dispatch = useDispatch();
 
   const onLogout = () => dispatch(logOut());
@@ -16,7 +15,7 @@ const UserMenu = () => {
         alt="avatar-icon"
         width="32"
       />
-      <span>Welcome, {name}</span>
+      <span>Welcome</span>
       <button type="button" onClick={onLogout}>
         Logout
       </button>
