@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { register } from "../../redux/operation/authOperation";
 
 const initialState = {
-  name: "",
+  // name: "",
   email: "",
   password: "",
 };
@@ -29,7 +29,7 @@ const RegisterPage = () => {
 
       <form onSubmit={submitHandler}>
         <p>Create your account</p>
-        <label>
+        {/* <label>
           Name
           <input
             type="text"
@@ -37,7 +37,7 @@ const RegisterPage = () => {
             value={state.name}
             onChange={changeHandler}
           />
-        </label>
+        </label> */}
 
         <label>
           Email
